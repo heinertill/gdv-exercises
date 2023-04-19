@@ -1,0 +1,152 @@
+[
+    {
+        "title": "01 Introduction to the exercises: Setup and index into a linearized array",
+        "entries":
+        [
+            {
+                "title": "Fill Screen",
+                "description": "Fill the entire buffer with a constant RGBA color #FF0000FF (red)",
+                "file": "fillscreen.html"
+            }
+        ]
+    },
+    {
+        "title": "02 Creating patterns",
+        "entries":
+        [
+            {
+                "title": "Gradient",
+                "description": "Fill the buffer with a gradient from black to white (horizontal)",
+                "file": "gradient.html"
+            },
+            {
+                "title": "Checkerboard",
+                "description": "Create a checkerboard in the buffer by alternating between black and white patches",
+                "file": "checkerboard.html"
+            },
+            {
+                "title": "Simple Circle",
+                "description": "Warm up in thinking about distances",
+                "file": "circlesimple.html"
+            },
+            {
+                "title": "Circle",
+                "description": "Circle with movable center",
+                "file": "circle.html"
+            }
+
+        ]
+    },
+    {
+        "title": "03 Quantisation",
+        "entries":
+        [
+            {
+                "title": "Grayscale",
+                "description": "Convert an RGB image to brightness values",
+                "file": "grayscale.html"
+            },
+            {
+                "title": "Quantisation to 4 brightness values",
+                "description": "Posterize an RGB image to 4 brightness values",
+                "file": "quantisegrayscale.html"
+            },
+            {
+                "title": "Quantisation to 4 values per color channel",
+                "description": "Posterize an RGB image to 4 brightness values per color channel",
+                "file": "quantisecolor.html"
+            },
+            {
+                "title": "Gamma correction",
+                "description": "Perform gamma correction on an image",
+                "file": "gammacorrection.html"
+            }
+        ]
+    },
+    {
+        "title": "04 Lines",
+        "entries":
+        [
+            {
+                "title": "Simple DDA",
+                "description": "Draw a single line with the DDA algorithm",
+                "file": "ddasimple.html"
+            },
+            {
+                "title": "Simple Bresenham",
+                "description": "Draw a single line with the Bresenham algorithm",
+                "file": "bresenhamsimple.html"
+            },
+            {
+                "title": "DDA",
+                "description": "Draw lines with the DDA algorithm",
+                "file": "dda.html"
+            },
+            {
+                "title": "Bresenham",
+                "description": "Draw lines with the Bresenham algorithm",
+                "file": "bresenham.html"
+            }
+        ]
+    },
+    {
+        "title": "05 Raytracing",
+        "entries":
+        [
+            {
+                "title": "Basic Raytracing",
+                "description": "Raytrace a single sphere",
+                "file": "raytracing.html"
+            },
+            {
+                "title": "Enhanced Raytracing",
+                "description": "Raytrace many spheres",
+                "file": "manyspheres.html"
+            }
+        ]
+    },
+    {
+        "title": "06 Phong",
+        "entries":
+        [
+            {
+                "title": "Basic Lighting",
+                "description": "Introduce lighting in your scene",
+                "file": "phong.html"
+            }
+        ]
+    },
+    {
+        "title": "07 Transformations",
+        "entries":
+        [
+            {
+                "title": "Basic Transformations",
+                "description": "Transform objects with matrices",
+                "file": "matrix.html"
+            }
+        ]
+    },
+    {
+        "title": "08 Scene Graph",
+        "entries":
+        [
+            {
+                "title": "Basic Scene Graphs",
+                "description": "Arrange objects in a hierarchical data structure and render them",
+                "file": "scenegraph.html"
+            }
+        ]
+    },
+    {
+        "title": "09 Rasterization",
+        "entries":
+        [
+            {
+                "title": "WebGL: Primitives, Buffers, Vertex and Fragment Shaders",
+                "description": "Understand rasterisation with WebGL",
+                "file": "threejssimple.html"
+            }
+        ]
+    }
+]

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>GDV Übungen</title>
+  <link rel="icon" type="image/png" href="ai-logo.png">
+  <script type="text/javascript" src="index.bundle.js"></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="/index.html">
+        <img src="ai-logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        Graphische Datenverarbeitung
+      </a>
+    </div>
+  </nav>
+  <br>
+
+  <div class="list-group list-group-flush">
+    <% htmlWebpackPlugin.options.exercises.forEach((exercise) => { %>
+    <div class="list-group-item flex-column align-items-start">
+      <br>
+      <div class="d-flex w-100 justify-content-between">
+        <% if (exercise['exists'] === true) { %>
+        <h5 class="mb-2"><%= exercise['title'] %></h5>
+        <% } else { %>
+        <h5 class="mb-2" style="color:#C0C0C0"><%= exercise['title'] %></h5>
+        <% } %>
+      </div>
+      <% exercise['entries'].forEach((entry) => { %>
+        <% if (entry['exists'] === true) { %>
+        <a href=<%= entry['file'] %>
+        <% } else { %>
+        <a style="color:#C0C0C0"
+        <% } %>
+          class="list-group-item list-group-item-action flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-between">
+            <h6 class="mb-0"><%= entry['title'] %></h6>
+          </div>
+          <p class="mb-0"><%= entry['description'] %> </p>
+        </a>
+        <% }); %>
+    </div>
+      <% }); %>
+  </div>
+</body>
+
+</html>
