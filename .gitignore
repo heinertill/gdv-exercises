@@ -1,0 +1,11 @@
+node_modules
+dist/*.bundle.js
+dist/webpack.config.js
+dist/webpack.config.js.map
+package-lock.json
+!dist
+dist/dist
+dist/src
+dist/test
+out
+.decker
