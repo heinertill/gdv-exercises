@@ -16,4 +16,13 @@ var currentline = -1;
 export function checkerboard(data: Uint8ClampedArray, x: number, y: number, width: number, height: number) {
 
     // TODO: Imagine an 8x8 tile checkerboard across the width and height of the canvas. Compute if the pixel at position (x, y) is inside a black or white tile. Set the pixel color accordingly in the pixel array 'data'.
+    let adress: number = 4 * (x + width*y);
+
+    if(x % Math.floor((width/4)) == 0 && y % Math.floor((height/8)) == 0) {
+        data[adress] =  0; // rot
+        data[adress+1] =  0; // grün
+        data[adress+2] =  0; // blau
+        data[adress+3] =  255; // transparenz 
+    } 
+    
 }
