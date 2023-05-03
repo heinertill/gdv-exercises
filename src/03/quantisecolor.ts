@@ -14,4 +14,9 @@ export function quantiseColor(x: number, y: number, source: Uint8ClampedArray, t
     // TODO: Limit the brightness of each color channel to the set of 4 different values 0, 85, 170, 255.
     // TODO: Set the RGBA values in the target array accordingly.
     // TODO:
+    let adress: number = 4 * (x + width*y);
+    target[adress] =  Math.floor(source[adress]/85)*85 ; // rot
+    target[adress+1] =  Math.floor(source[adress+1]/85)*85  // grün
+    target[adress+2] =  Math.floor(source[adress+2]/85)*85 ; // blau
+    target[adress+3] =  255; // transparenz
 }
