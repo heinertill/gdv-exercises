@@ -25,12 +25,8 @@ export function ddaSimple(
     // TODO: Calculcate the slope m for a line from pointA to pointB.
     // TODO: In this example, the main direction of the line is the x-direction.
     // TODO: Go from the x-coordinate of pointA (pointA[0]) to the x-coordinate of pointB (pointB[0]) and calculate the y-coordinate of the pixels in between.
-    let steigung: number = (pointB[0]-pointA[0])/(pointB[1]-pointA[1]);
-    for (let i = pointA[0]; i < pointB[0]; i++) {
-        for (let j = pointA[1]; j < pointB[1]; j++) {
-            if ((i-pointA[0])/(j-pointA[1]) == steigung) {
-                setPixel(data, i, j, width, height);
-            }
-        }
+    let steigung: number = (pointB[1]-pointA[1])/(pointB[0]-pointA[0]);
+    for (let i = 1; i < (pointB[0] - pointA[0]); i++) {
+        setPixel(data, pointA[0]+i, pointA[1]+Math.round(steigung*i), width, height);
     }
 }
