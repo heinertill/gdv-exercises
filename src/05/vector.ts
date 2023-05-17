@@ -16,6 +16,7 @@ export default class Vector {
      */
     constructor(x: number, y: number, z: number, w: number) {
         // TODO: Set the data member components to the given values
+        this.data = [x, y, z, w];
     }
 
     /**
@@ -24,7 +25,7 @@ export default class Vector {
      */
     get x(): number {
         // TODO: Return actual value
-        return null;
+        return this.data[0];
     }
 
     /**
@@ -33,6 +34,7 @@ export default class Vector {
      */
     set x(val: number) {
         // TODO: Set actual value
+        this.data[0] = val;
     }
 
     /**
@@ -41,7 +43,7 @@ export default class Vector {
      */
     get r(): number {
         // TODO: Return actual value
-        return null;
+        return this.data[0];
     }
 
     /**
@@ -50,6 +52,7 @@ export default class Vector {
      */
     set r(val: number) {
         // TODO: Set actual value
+        this.data[0] = val;
     }
 
     /**
@@ -58,7 +61,7 @@ export default class Vector {
      */
     get y(): number {
         // TODO: Return actual value
-        return null;
+        return this.data[1];
     }
 
     /**
@@ -67,6 +70,7 @@ export default class Vector {
      */
     set y(val: number) {
         // TODO: Set actual value
+        this.data[1] = val;
     }
 
     /**
@@ -75,7 +79,7 @@ export default class Vector {
      */
     get g(): number {
         // TODO: Return actual value
-        return null;
+        return this.data[1];
     }
 
     /**
@@ -84,6 +88,7 @@ export default class Vector {
      */
     set g(val: number) {
         // TODO: Set actual value
+        this.data[1] = val;
     }
 
     /**
@@ -92,7 +97,7 @@ export default class Vector {
      */
     get z(): number {
         // TODO: Return actual value
-        return null;
+        return this.data[2];
     }
 
     /**
@@ -101,6 +106,7 @@ export default class Vector {
      */
     set z(val: number) {
         // TODO: Set actual value
+        this.data[2] = val;
     }
 
     /**
@@ -109,7 +115,7 @@ export default class Vector {
      */
     get b(): number {
         // TODO: Return actual value
-        return null;
+        return this.data[2];
     }
 
     /**
@@ -118,6 +124,7 @@ export default class Vector {
      */
     set b(val: number) {
         // TODO: Set actual value
+        this.data[2] = val;
     }
 
     /**
@@ -126,7 +133,7 @@ export default class Vector {
      */
     get w(): number {
         // TODO: Return actual value
-        return null;
+        return this.data[3];
     }
 
     /**
@@ -135,6 +142,7 @@ export default class Vector {
      */
     set w(val: number) {
         // TODO: Set actual value
+        this.data[3] = val;
     }
 
     /**
@@ -143,7 +151,7 @@ export default class Vector {
      */
     get a(): number {
         // TODO: Return actual value
-        return null;
+        return this.data[3];
     }
 
     /**
@@ -152,6 +160,7 @@ export default class Vector {
      */
     set a(val: number) {
         // TODO: Set actual value
+        this.data[3] = val;
     }
 
     /**
@@ -161,7 +170,7 @@ export default class Vector {
      */
     add(other: Vector): Vector {
         // TODO: Return new vector with result
-        return null;
+        return new Vector(this.data[0]+other.x, this.data[1]+other.y, this.data[2]+other.z, this.data[3]+other.w);
     }
 
     /**
@@ -171,7 +180,7 @@ export default class Vector {
      */
     sub(other: Vector): Vector {
         // TODO: Return new vector with result
-        return null;
+        return new Vector(this.data[0]-other.x, this.data[1]-other.y, this.data[2]-other.z, this.data[3]-other.w);
     }
 
     /**
@@ -181,7 +190,7 @@ export default class Vector {
      */
     mul(other: number): Vector {
         // TODO: Return new vector with result
-        return null;
+        return new Vector(this.data[0]*other, this.data[1]*other, this.data[2]*other, this.data[3]*other);
     }
 
     /**
@@ -191,7 +200,7 @@ export default class Vector {
      */
     div(other: number): Vector {
         // TODO: Return new vector with result
-        return null;
+        return new Vector(this.data[0]/other, this.data[1]/other, this.data[2]/other, this.data[3]/other);
     }
 
     /**
@@ -201,7 +210,7 @@ export default class Vector {
      */
     dot(other: Vector): number {
         // TODO: Compute and return dot product
-        return 0;
+        return (this.x * other.x + this.y * other.y + this.z * other.z + this.w * other.w);
     }
 
     /**
@@ -213,7 +222,7 @@ export default class Vector {
     cross(other: Vector): Vector {
         // TODO: Return new vector with result
         // TODO: The fourth component should be set to 0
-        return null;
+        return new Vector((this.y*other.z - this.z*other.y), (this.z*other.x - this.x*other.z), (this.x*other.y - this.y*other.x), 0);
     }
 
     /**
@@ -222,7 +231,7 @@ export default class Vector {
      */
     normalize(): Vector {
         // TODO: Normalize this vector and return it
-        return this;
+        return this.mul(1/this.length);
     }
 
     /**
@@ -234,7 +243,7 @@ export default class Vector {
         // TODO: Perform comparison and return result
         // TODO: Respect inaccuracies: coordinates within 0.000001 of each other
         // TODO: should be considered equal
-        return false;
+        return ((this.x <= other.x + 0.000001 && this.x >= other.x - 0.000001) && (this.y <= other.y + 0.000001 && this.y >= other.y - 0.000001) && (this.z <= other.z + 0.000001 && this.z >= other.z - 0.000001));
     }
 
     /**
@@ -243,7 +252,7 @@ export default class Vector {
      */
     get length(): number {
         // TODO: Calculate and return length
-        return 0;
+        return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2) + Math.pow(this.z, 2));
     }
 
     /**
