@@ -33,6 +33,10 @@ export default class Ray {
         // TODO: on the image plane. In addition to the coordinates (x, y), you will need the
         // TODO: width and height of the camera (i.e. the width and height of the camera's
         // TODO: image plane), and the angle alpha specifying the camera's field of view.
-        return null;
+        let a: number = (camera.width-1)/2;
+        let d: number = new Vector(x-camera.origin.x, y-camera.origin.y, 0, 0).length;
+        let alpha: number = Math.asin(a/d);
+        let direction: Vector = new Vector((x - (camera.width-1)/2), ((camera.height-1)/2 - y), (- ((camera.width/2) / Math.tan(alpha/2))), 1);
+        return new Ray(new Vector(camera.origin.x, camera.origin.y, camera.origin.z, 1), direction.normalize());
     }
 }
