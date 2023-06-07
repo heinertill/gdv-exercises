@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Graphische Datenverarbeitung - Color - XYZ</title>
+    <script type="text/javascript" src="quantisecolor.bundle.js"></script>
+    <link rel="icon" type="image/png" href="ai-logo.png">
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="/index.html">
+                <img src="ai-logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                Graphische Datenverarbeitung
+            </a>
+            <div class="navbar-brand">Posterise Color</div>
+        </div>
+    </nav>
+    <br>
+    <div class="container">
+        <div class="row">
+            <figure class="figure col-sm-6">
+                <canvas id="result" class="figure-img mx-auto d-block" width="512" height="384"></canvas>
+                <figcaption class="figure-caption text-center">
+                  Quantise the image to 4 brightness values per color channel.
+                </figcaption>
+            </figure>
+            <figure class="figure col-sm-6">
+                <img class="figure-img mx-auto d-block" src="quantise-color-poster-finished.png">
+                <figcaption class="figure-caption text-center">Reference image</figcaption>
+            </figure>
+            <figure class="figure col-sm-6">
+              <canvas id="original" class="figure-img mx-auto d-block" width="512" height="384"></canvas>
+              <figcaption class="figure-caption text-center">
+                Original
+              </figcaption>
+            </figure>
+        </div>
+    </div>
+</body>
+
+</html>
