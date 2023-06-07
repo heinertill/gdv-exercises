@@ -44,6 +44,18 @@ export default class Sphere {
         // TODO: Return an Intersection or null if there was no hit. In case
         // TODO: of two hits, return the one closer to the start point of
         // TODO: the ray.
-        return null;
+
+        let x0 = ray.origin.sub(this.center);
+
+        let c = Math.pow(x0.dot(ray.direction), 2) - x0.dot(x0) + Math.pow(this.radius, 2);
+
+        if(c < 0) {
+            return null;
+        }
+
+        let t2 = - x0.dot(ray.direction) - Math.sqrt(c);
+        let Int2 = new Intersection(t2, null, null);
+
+        return Int2;
     }
 }

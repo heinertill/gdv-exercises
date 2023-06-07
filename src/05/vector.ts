@@ -170,7 +170,7 @@ export default class Vector {
      */
     add(other: Vector): Vector {
         // TODO: Return new vector with result
-        return new Vector(this.data[0]+other.x, this.data[1]+other.y, this.data[2]+other.z, this.data[3]+other.w);
+        return new Vector(this.x+other.x, this.y+other.y, this.z+other.z, this.w+other.w);
     }
 
     /**
@@ -180,7 +180,7 @@ export default class Vector {
      */
     sub(other: Vector): Vector {
         // TODO: Return new vector with result
-        return new Vector(this.data[0]-other.x, this.data[1]-other.y, this.data[2]-other.z, this.data[3]-other.w);
+        return new Vector(this.x-other.x, this.y-other.y, this.z-other.z, this.w-other.w);
     }
 
     /**
@@ -190,7 +190,7 @@ export default class Vector {
      */
     mul(other: number): Vector {
         // TODO: Return new vector with result
-        return new Vector(this.data[0]*other, this.data[1]*other, this.data[2]*other, this.data[3]*other);
+        return new Vector(this.x*other, this.y*other, this.z*other, this.w*other);
     }
 
     /**
@@ -200,7 +200,7 @@ export default class Vector {
      */
     div(other: number): Vector {
         // TODO: Return new vector with result
-        return new Vector(this.data[0]/other, this.data[1]/other, this.data[2]/other, this.data[3]/other);
+        return new Vector(this.x/other, this.y/other, this.z/other, this.w/other);
     }
 
     /**
@@ -210,7 +210,7 @@ export default class Vector {
      */
     dot(other: Vector): number {
         // TODO: Compute and return dot product
-        return (this.x * other.x + this.y * other.y + this.z * other.z + this.w * other.w);
+        return (this.x*other.x + this.y*other.y + this.z*other.z + this.w*other.w);
     }
 
     /**
@@ -231,7 +231,11 @@ export default class Vector {
      */
     normalize(): Vector {
         // TODO: Normalize this vector and return it
-        return this.mul(1/this.length);
+        let l = this.length;
+        this.x = this.x/l;
+        this.y = this.y/l;
+        this.z = this.z/l;
+        return this;
     }
 
     /**
@@ -243,7 +247,13 @@ export default class Vector {
         // TODO: Perform comparison and return result
         // TODO: Respect inaccuracies: coordinates within 0.000001 of each other
         // TODO: should be considered equal
-        return ((this.x <= other.x + 0.000001 && this.x >= other.x - 0.000001) && (this.y <= other.y + 0.000001 && this.y >= other.y - 0.000001) && (this.z <= other.z + 0.000001 && this.z >= other.z - 0.000001));
+        new Vector(this.x-other.x, this.y-other.y, this.z-other.z, this.w-other.w);
+        if(this.x-other.x < 0.000001 && this.y-other.y < 0.000001 && this.z-other.z < 0.000001 && this.w-other.w < 0.000001) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     /**
@@ -252,7 +262,7 @@ export default class Vector {
      */
     get length(): number {
         // TODO: Calculate and return length
-        return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2) + Math.pow(this.z, 2));
+        return Math.sqrt(this.dot(this));
     }
 
     /**

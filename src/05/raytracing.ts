@@ -25,4 +25,12 @@ export function raytrace(data: Uint8ClampedArray,
     // TODO: (x, y) in the camera's image plane, and perform intersection
     // TODO: with the given sphere. Set color of pixel (x, y) in the data
     // TODO: array to black, if the ray hits the sphere.
+    let r = Ray.makeRay(x, y, camera);
+    if (sphere.intersect(r) != null) {
+        let adress: number = 4 * (x + width*y);
+        data[adress] =  0; // rot
+        data[adress+1] =  0; // grün
+        data[adress+2] =  0; // blau
+        data[adress+3] =  255; // transparenz
+    } 
 }

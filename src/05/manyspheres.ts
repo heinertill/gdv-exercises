@@ -25,4 +25,19 @@ export function raytrace(data: Uint8ClampedArray,
     // TODO: Generate ray and perform intersection with every sphere.
     // TODO: On intersection set pixel color to color of the sphere
     // TODO: containing the closest intersection point.
+
+    
+    let shortestDistance: number = Number.MAX_SAFE_INTEGER;
+    let r = Ray.makeRay(x, y, camera);
+    for (let i = 0; i < spheres.length; i++) {
+        let intersection = spheres[i].intersect(r);
+        if (intersection != null && intersection.t < shortestDistance) {
+            let adress: number = 4 * (x + width*y);
+            data[adress] =  spheres[i].color.x*255; // rot
+            data[adress+1] =  spheres[i].color.y*255; // grün
+            data[adress+2] =  spheres[i].color.z*255; // blau
+            data[adress+3] =  255; // transparenz
+            shortestDistance = intersection.t;
+        }
+    }   
 }

@@ -45,6 +45,6 @@ describe('Ray', () => {
         expect(r3.direction.x).to.be.closeTo(-0.564, 0.01);
         expect(r3.direction.y).to.be.closeTo(0.642, 0.01);
         expect(r3.direction.z).to.be.closeTo(-0.518, 0.01);
-        expect(r3.direction.w).to.be.closeTo(-0.02, 0.01);
+        expect(r3.direction.w).to.equal(0);
     });
 });
