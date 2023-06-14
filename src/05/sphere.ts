@@ -56,8 +56,9 @@ export default class Sphere {
         let t2 = - x0.dot(ray.direction) - Math.sqrt(c);
 
         let Schnittpunkt: Vector = new Vector((ray.origin.x + ray.direction.x * t2), (ray.origin.y + ray.direction.y * t2), (ray.origin.z + ray.direction.z * t2), 1);
+        let normal: Vector = (Schnittpunkt.sub(this.center)).normalize();
 
-        let Int2 = new Intersection(t2, Schnittpunkt, null);
+        let Int2 = new Intersection(t2, Schnittpunkt, normal);
 
         return Int2;
     }
