@@ -65,8 +65,12 @@ export default class Matrix {
      */
     static translation(translation: Vector): Matrix {
 
-        // TODO: Return a new Matrix that is translated according to the given Vector
-        return Matrix.identity();
+        return new Matrix([
+            1, 0, 0, translation.x,
+            0, 1, 0, translation.y,
+            0, 0, 1, translation.z,
+            0, 0, 0, 1
+        ]);
     }
 
     /**
@@ -77,12 +81,17 @@ export default class Matrix {
      */
     static rotation(axis: Vector, angle: number): Matrix {
 
-        // TODO: Return a new rotation matrix, distinguish the different
-        // TODO: axis of rotation. You can use the axis vector
-        // TODO: (1, 0, 0, 0) to specify the x-axis
-        // TODO: (0, 1, 0, 0) to specify the y-axis
-        // TODO: (0, 0, 1, 0) to specify the z-axis
-        return Matrix.identity();
+        const { x, y, z } = axis.normalize();
+        const cosAngle = Math.cos(angle);
+        const sinAngle = Math.sin(angle);
+        const oneMinusCosAngle = 1 - cosAngle;
+
+        return new Matrix([
+            cosAngle + x * x * oneMinusCosAngle, x * y * oneMinusCosAngle - z * sinAngle, x * z * oneMinusCosAngle + y * sinAngle, 0,
+            y * x * oneMinusCosAngle + z * sinAngle, cosAngle + y * y * oneMinusCosAngle, y * z * oneMinusCosAngle - x * sinAngle, 0,
+            z * x * oneMinusCosAngle - y * sinAngle, z * y * oneMinusCosAngle + x * sinAngle, cosAngle + z * z * oneMinusCosAngle, 0,
+            0, 0, 0, 1
+        ]);
     }
 
     /**
@@ -91,8 +100,12 @@ export default class Matrix {
      * @return The resulting scaling matrix
      */
     static scaling(scale: Vector): Matrix {
-        // TODO: Return a new scaling Matrix with the scaling components of the Vector scale
-        return Matrix.identity();
+        return new Matrix([
+            scale.x, 0, 0, 0,
+            0, scale.y, 0, 0,
+            0, 0, scale.z, 0,
+            0, 0, 0, 1
+        ]);
     }
 
 
@@ -115,8 +128,19 @@ export default class Matrix {
      * @return The result of the multiplication this*other
      */
     mul(other: Matrix): Matrix {
-        // TODO: Return a new Matrix mat with mat = this * other
-        return Matrix.identity();
+        const resultData: number[] = [];
+
+        for (let i = 0; i < 4; i++) {
+            for (let j = 0; j < 4; j++) {
+                let sum = 0;
+                for (let k = 0; k < 4; k++) {
+                    sum += this.getVal(i, k) * other.getVal(k, j);
+                }
+                resultData[i * 4 + j] = sum;
+            }
+        }
+
+        return new Matrix(resultData);
     }
 
     /**
@@ -126,7 +150,17 @@ export default class Matrix {
      */
     mulVec(other: Vector): Vector {
         // TODO: Return a new Vector vec with vec = this * other
-        return new Vector(0, 0, 0, 0);
+        const resultData: number[] = [];
+
+        for (let i = 0; i < 4; i++) {
+            let sum = 0;
+            for (let j = 0; j < 4; j++) {
+                sum += this.getVal(i, j) * other.data[j];
+            }
+            resultData[i] = sum;
+        }
+
+        return new Vector(resultData[0], resultData[1], resultData[2], resultData[3]);
     }
 
     /**
@@ -185,10 +219,10 @@ export default class Matrix {
     print() {
         for (let row = 0; row < 4; row++) {
             console.log("> " + this.getVal(row, 0) +
-                        "\t" + this.getVal(row, 1) +
-                        "\t" + this.getVal(row, 2) +
-                        "\t" + this.getVal(row, 3)
-                       );
+                "\t" + this.getVal(row, 1) +
+                "\t" + this.getVal(row, 2) +
+                "\t" + this.getVal(row, 3)
+            );
         }
     }
 }
